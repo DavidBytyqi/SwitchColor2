@@ -16,10 +16,10 @@ import java.util.Random;
 
 public class SwitchColor extends AppCompatActivity {
     int score=0;
-    Button b, b1,b2,b3;
+    Button b, b1,b2,b3,b4;
     TextView t1,t2;
     String []color=new String[11];
-    String[]colorButtons=new String[3];
+    String[]colorButtons=new String[4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +29,7 @@ public class SwitchColor extends AppCompatActivity {
         b1=(Button)findViewById(R.id.button);
         b2=(Button)findViewById(R.id.button2);
         b3=(Button)findViewById(R.id.button3);
+        b4=(Button)findViewById(R.id.button4);
         t1=(TextView)findViewById(R.id.textColor);
         t2=(TextView)findViewById(R.id.score);
 
@@ -36,6 +37,7 @@ public class SwitchColor extends AppCompatActivity {
         b1.setVisibility(View.INVISIBLE);
         b2.setVisibility(View.INVISIBLE);
         b3.setVisibility(View.INVISIBLE);
+        b4.setVisibility(View.INVISIBLE);
         t1.setVisibility(View.INVISIBLE);
 
         createColorNames();
@@ -109,14 +111,17 @@ public class SwitchColor extends AppCompatActivity {
         colorButtons[0]=color[0];
         colorButtons[1]=color[1];
         colorButtons[2]=color[2];
+        colorButtons[3]=color[3];
         b.setVisibility(View.INVISIBLE);
         b1.setVisibility(View.VISIBLE);
         b2.setVisibility(View.VISIBLE);
         b3.setVisibility(View.VISIBLE);
+        b4.setVisibility(View.VISIBLE);
         t1.setVisibility(View.VISIBLE);
         b1.setEnabled(true);
         b2.setEnabled(true);
         b3.setEnabled(true);
+        b4.setEnabled(true);
         assignColorText();
         assignColorButton();
         
@@ -126,6 +131,7 @@ public class SwitchColor extends AppCompatActivity {
                 b1.setEnabled(false);
                 b2.setEnabled(false);
                 b3.setEnabled(false);
+                b4.setEnabled(false);
                 String textColor=color[0];
                 String textButtonColor=colorButtons[0];
                 if(textColor.equals(textButtonColor)){
@@ -139,6 +145,7 @@ public class SwitchColor extends AppCompatActivity {
                 b1.setEnabled(false);
                 b2.setEnabled(false);
                 b3.setEnabled(false);
+                b4.setEnabled(false);
                 String textColor=color[0];
                 String textButtonColor=colorButtons[1];
                 if(textColor.equals(textButtonColor)){
@@ -152,8 +159,23 @@ public class SwitchColor extends AppCompatActivity {
                 b1.setEnabled(false);
                 b2.setEnabled(false);
                 b3.setEnabled(false);
+                b4.setEnabled(false);
                 String textColor=color[0];
                 String textButtonColor=colorButtons[2];
+                if(textColor.equals(textButtonColor)){
+                    score++;
+                }
+            }
+        });
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b1.setEnabled(false);
+                b2.setEnabled(false);
+                b3.setEnabled(false);
+                b4.setEnabled(false);
+                String textColor=color[0];
+                String textButtonColor=colorButtons[3];
                 if(textColor.equals(textButtonColor)){
                     score++;
                 }
@@ -271,9 +293,37 @@ public class SwitchColor extends AppCompatActivity {
             b3.setTextColor(Color.BLACK);
             b3.setBackgroundColor(Color.rgb(255,215,0));
         }
+        b4.setTextColor(Color.WHITE);
+        if(colorButtons[3].equals("BLACK")){
+            b4.setBackgroundColor(Color.BLACK);
+        }else if(colorButtons[3].equals("GRAY")){
+            b4.setBackgroundColor(Color.GRAY);
+        }else if(colorButtons[3].equals("RED")){
+            b4.setBackgroundColor(Color.RED);
+        }else if(colorButtons[3].equals("PINK")){
+            b4.setBackgroundColor(Color.rgb(255,20,147));
+        }else if(colorButtons[3].equals("ORANGE")){
+            b4.setBackgroundColor(Color.rgb(255,140,0));
+        }else if(colorButtons[3].equals("YELLOW")){
+            b4.setTextColor(Color.BLACK);
+            b4.setBackgroundColor(Color.YELLOW);
+        }else if(colorButtons[3].equals("GREEN")){
+            b4.setTextColor(Color.BLACK);
+            b4.setBackgroundColor(Color.GREEN);
+        }else if(colorButtons[3].equals("BLUE")){
+            b4.setBackgroundColor(Color.BLUE);
+        }else if(colorButtons[3].equals("PURPLE")){
+            b4.setBackgroundColor(Color.rgb(128,0,128));
+        }else if(colorButtons[3].equals("BROWN")){
+            b4.setBackgroundColor(Color.rgb(102,51,0));
+        }else if(colorButtons[3].equals("GOLD")){
+            b4.setTextColor(Color.BLACK);
+            b4.setBackgroundColor(Color.rgb(255,215,0));
+        }
         b1.setText(colorButtons[2]);
         b2.setText(colorButtons[1]);
         b3.setText(colorButtons[0]);
+        b4.setText(colorButtons[3]);
 
     }
     private void shuffleButtonsColor(){
